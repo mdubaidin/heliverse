@@ -4,9 +4,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import {
-    Button,
     Divider,
     Drawer,
     Grid,
@@ -48,12 +46,6 @@ export default function Navbar() {
                     </Grid>
                     <Grid item xs textAlign='center'>
                         <Image src='/heliverse.png' sx={{ height: '32px' }} />
-                    </Grid>
-
-                    <Grid item>
-                        <IconButton>
-                            <ShoppingBagOutlinedIcon />
-                        </IconButton>
                     </Grid>
                 </Grid>
             </Box>
