@@ -11,7 +11,7 @@ import useModal from '../../hooks/useModal';
 import Loading from '../../components/Loading';
 
 const Users = () => {
-    const [teams, setTeams] = useState([]);
+    const [teams, setTeams] = useState(null);
     const errorHandler = useErrorHandler();
     const { modalState, openModal, closeModal } = useModal();
 
@@ -20,6 +20,7 @@ const Users = () => {
             const { data } = await axios.get('/team');
             setTeams(data.teams);
         } catch (error) {
+            setTeams([]);
             errorHandler(error);
         }
     }, [errorHandler]);
@@ -28,9 +29,7 @@ const Users = () => {
         fetchTeams();
     }, [fetchTeams]);
 
-    return teams.length === 0 ? (
-        <Loading message='Please wait! while the teams are loading...' />
-    ) : (
+    return teams ? (
         <Container>
             <Stack
                 direction='row'
@@ -76,6 +75,8 @@ const Users = () => {
                 </>
             </Modal>
         </Container>
+    ) : (
+        <Loading message='Please wait! while the teams are loading...' />
     );
 };
 

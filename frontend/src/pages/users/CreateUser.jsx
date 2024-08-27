@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useCallback, useState, useRef } from 'react';
+import React, { useCallback, useState, useRef } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { getBase64, isEmpty } from '../../utils/utils';
 import CloseIcon from '@mui/icons-material/Close';
@@ -10,7 +10,6 @@ import Form from '../../components/Form';
 import PhotoCameraOutlinedIcon from '@mui/icons-material/PhotoCameraOutlined';
 import {
     Avatar,
-    Box,
     Button,
     Card,
     CircularProgress,
@@ -82,7 +81,11 @@ const CreateUser = props => {
             start();
             try {
                 const response = await axios.get(`/users/${id}`);
-                setAvatar(response.data.user.avatar);
+                const { user } = response.data;
+                setAvatar(user.avatar);
+
+                user.available = String(user.available);
+
                 return response.data.user;
             } catch (e) {
                 errorHandler(e);

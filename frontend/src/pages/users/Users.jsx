@@ -32,7 +32,7 @@ const Domains = [
 ];
 
 const Users = () => {
-    const [users, setUsers] = useState([]);
+    const [users, setUsers] = useState(null);
     const [filter, setFilter] = useState({ domain: '', gender: '', available: '' });
     const [search, setSearch] = useState('');
     const [page, setPage] = useState({ count: 0, value: 1 });
@@ -64,6 +64,7 @@ const Users = () => {
             setUsers(users);
             setPage({ count: pageData.totalPages, value: pageData.currentPage });
         } catch (error) {
+            setUsers([]);
             errorHandler(error);
         }
     }, [errorHandler, searchValue, filter, page.value]);
@@ -72,9 +73,7 @@ const Users = () => {
         fetchUsers();
     }, [fetchUsers]);
 
-    return users.length === 0 ? (
-        <Loading message='Please wait! while the users are loading...' />
-    ) : (
+    return users ? (
         <Container>
             <Stack
                 direction='row'
@@ -188,6 +187,8 @@ const Users = () => {
                 </>
             </Modal>
         </Container>
+    ) : (
+        <Loading message='Please wait! while the users are loading...' />
     );
 };
 

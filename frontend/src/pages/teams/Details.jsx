@@ -27,10 +27,9 @@ import useModal from '../../hooks/useModal';
 import useLoader from '../../hooks/useLoader';
 import MemberCard from './MemberCard';
 import Loading from '../../components/Loading';
-import { isEmpty } from '../../utils/utils';
 
 const Details = () => {
-    const [team, setTeam] = useState({});
+    const [team, setTeam] = useState(null);
     const errorHandler = useErrorHandler();
     const { id } = useParams();
     const { modalState, openModal, closeModal } = useModal();
@@ -47,6 +46,7 @@ const Details = () => {
             const { data } = await axios.get(`/team/${id}`);
             setTeam(data.team);
         } catch (error) {
+            setTeam({});
             errorHandler(error);
         }
     }, [errorHandler]);
@@ -70,9 +70,7 @@ const Details = () => {
         fetchTeam();
     }, [fetchTeam]);
 
-    return isEmpty(team) ? (
-        <Loading message='Please wait! while your team datails are loading...' />
-    ) : (
+    return team ? (
         <Container>
             <Stack justifyContent='center' alignItems='center' height='100%'>
                 <Card
@@ -257,6 +255,8 @@ const Details = () => {
                 </Card>
             </Modal>
         </Container>
+    ) : (
+        <Loading message='Please wait! while your team datails are loading...' />
     );
 };
 

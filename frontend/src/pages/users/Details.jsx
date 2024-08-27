@@ -29,7 +29,7 @@ import { isEmpty } from '../../utils/utils';
 import Loading from '../../components/Loading';
 
 const Details = () => {
-    const [user, setUser] = useState({});
+    const [user, setUser] = useState(null);
     const errorHandler = useErrorHandler();
     const { id } = useParams();
     const { modalState, openModal, closeModal } = useModal();
@@ -46,6 +46,7 @@ const Details = () => {
             const { data } = await axios.get(`/users/${id}`);
             setUser(data.user);
         } catch (error) {
+            setUser({});
             errorHandler(error);
         }
     }, [errorHandler]);
@@ -69,9 +70,7 @@ const Details = () => {
         fetchUser();
     }, [fetchUser]);
 
-    return isEmpty(user) ? (
-        <Loading message='Please wait! while the user profile loading...' />
-    ) : (
+    return user ? (
         <Container>
             <Stack justifyContent='center' alignItems='center' height='100%'>
                 <Card
@@ -248,6 +247,8 @@ const Details = () => {
                 </Card>
             </Modal>
         </Container>
+    ) : (
+        <Loading message='Please wait! while the user profile loading...' />
     );
 };
 

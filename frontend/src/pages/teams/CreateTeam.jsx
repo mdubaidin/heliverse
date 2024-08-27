@@ -91,6 +91,7 @@ const CreateTeam = props => {
                 const response = await axios.get(`/team/${id}`);
                 const { team } = response.data;
                 setAvatar(team.avatar);
+                team.available = String(team.available);
 
                 const format = {
                     cache: {},
