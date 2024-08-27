@@ -14,7 +14,9 @@ app.use(morgan('dev'));
 
 app.use(
     cors({
-        origin: ['http://localhost:5173', 'https://heliverse-6w7r.onrender.com'],
+        origin: '*',
+        methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT'],
+        credentials: true,
     })
 );
 
