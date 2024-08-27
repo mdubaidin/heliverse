@@ -11,7 +11,7 @@ export default function Loading({ message, minHeight, textColor }) {
             <Grid item>
                 <CircularProgress style={{ marginRight: '30px' }} />
             </Grid>
-            <Grid item>
+            <Grid item display={{ xs: 'none', md: 'block' }}>
                 <Typography variant='h6' sx={{ color: textColor || 'inherit' }}>
                     {message}
                 </Typography>
