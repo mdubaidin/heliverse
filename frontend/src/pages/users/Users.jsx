@@ -20,16 +20,7 @@ import useModal from '../../hooks/useModal';
 import CreateUser from './CreateUser';
 import { filterQuery } from '../../utils/utils';
 import Loading from '../../components/Loading';
-
-const Domains = [
-    'Business Development',
-    'Finance',
-    'IT',
-    'Management',
-    'Marketing',
-    'Sales',
-    'UI Designing',
-];
+import { Domains, Gender } from '../../constants/filters';
 
 const Users = () => {
     const [users, setUsers] = useState(null);
@@ -98,7 +89,7 @@ const Users = () => {
             </Stack>
 
             <Stack
-                direction='row'
+                direction={{ xs: 'column', md: 'row' }}
                 spacing={4}
                 justifyContent='space-between'
                 alignItems='center'
@@ -127,8 +118,11 @@ const Users = () => {
                         onChange={onSelectHandler}
                         renderValue={v => (v ? v : 'Gender')}>
                         <MenuItem value=''>All</MenuItem>
-                        <MenuItem value='Male'>Male</MenuItem>
-                        <MenuItem value='Female'>Female</MenuItem>
+                        {Gender.map(gen => (
+                            <MenuItem key={gen} value={gen}>
+                                {gen}
+                            </MenuItem>
+                        ))}
                     </Select>
 
                     <Select

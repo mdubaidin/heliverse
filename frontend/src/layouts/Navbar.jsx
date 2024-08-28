@@ -44,7 +44,7 @@ export default function Navbar() {
                             <CloseIcon />
                         </IconButton>
                     </Grid>
-                    <Grid item xs textAlign='center'>
+                    <Grid item xs>
                         <Image src='/heliverse.png' sx={{ height: '32px' }} />
                     </Grid>
                 </Grid>
@@ -114,7 +114,7 @@ export default function Navbar() {
                                 <MenuIcon />
                             </IconButton>
                         </Grid>
-                        <Grid item xs textAlign={{ xs: 'center', xm: 'left' }}>
+                        <Grid item xs>
                             <Image src='/heliverse.png' sx={{ height: '40px' }} />
                         </Grid>
 

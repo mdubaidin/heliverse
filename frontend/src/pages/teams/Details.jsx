@@ -88,9 +88,6 @@ const Details = () => {
                         sx={{
                             width: 110,
                             height: 110,
-                            bgcolor: '#dedcd4',
-                            border: '1px solid',
-                            borderColor: 'divider',
                             mb: 4,
                         }}
                     />

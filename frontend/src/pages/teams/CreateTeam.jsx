@@ -288,13 +288,22 @@ const CreateTeam = props => {
                     )}
                     fullWidth
                     SearchProps={{
-                        onChange: e => fetchUsers(e.target.value),
+                        onChange: e => {
+                            if (e.target.value.trim()) return fetchUsers(e.target.value);
+                            setUsers(prev => ({ ...prev, search: {} }));
+                        },
                     }}>
-                    {Object.keys(users.search).map(id => (
-                        <MenuItem value={id} key={id} sx={{ px: 1.2 }}>
-                            {users.search[id]}
-                        </MenuItem>
-                    ))}
+                    {isEmpty(users.search) ? (
+                        <Typography variant='subtitle2' color='text.secondary' textAlign='center'>
+                            No search results
+                        </Typography>
+                    ) : (
+                        Object.keys(users.search).map(id => (
+                            <MenuItem value={id} key={id} sx={{ px: 1.2 }}>
+                                {users.search[id]}
+                            </MenuItem>
+                        ))
+                    )}
                 </SelectWithSearch>
 
                 <Stack direction='row' justifyContent='space-between' alignItems='center'>

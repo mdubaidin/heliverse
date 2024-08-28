@@ -3,7 +3,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const UserCard = props => {
-    const { _id, firstName, lastName, email, domain, avatar, available } = props.user;
+    const { _id, firstName, lastName, email, gender, domain, avatar, available } = props.user;
     const navigate = useNavigate();
 
     return (
@@ -59,7 +59,7 @@ const UserCard = props => {
                 {domain} at @company
             </Typography>
             <Typography variant='body1' fontSize={15} fontWeight={600}>
-                lorem ipsum dolor sit amet, consectet
+                {gender}
             </Typography>
         </Card>
     );

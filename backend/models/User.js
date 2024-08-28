@@ -1,7 +1,16 @@
 import { model, Schema } from 'mongoose';
 import { emailValidator } from '../utils/validators.js';
 
-const GENDER = ['Male', 'Female', 'Other'];
+const GENDER = [
+    'Male',
+    'Female',
+    'Bigender',
+    'Polygender',
+    'Non-binary',
+    'Agender',
+    'Genderfluid',
+    'Genderqueer',
+];
 
 const DOMAIN = [
     'Business Development',

@@ -23,9 +23,6 @@ const TeamCard = props => {
                     sx={{
                         width: 70,
                         height: 70,
-                        bgcolor: '#dedcd4',
-                        border: '1px solid',
-                        borderColor: 'divider',
                     }}
                 />
 
