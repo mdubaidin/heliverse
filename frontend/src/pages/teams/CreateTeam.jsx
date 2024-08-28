@@ -26,6 +26,7 @@ import Select from '../../components/Select';
 import Loading from '../../components/Loading';
 import { useDebouncedCallback } from '@mantine/hooks';
 import SelectWithSearch from '../../components/SelectWithSearch';
+import { Domains } from '../../constants/filters';
 
 const defaultValues = {
     avatar: '',
@@ -34,16 +35,6 @@ const defaultValues = {
     available: '',
     members: [],
 };
-
-const Domains = [
-    'Business Development',
-    'Finance',
-    'IT',
-    'Management',
-    'Marketing',
-    'Sales',
-    'UI Designing',
-];
 
 const CreateTeam = props => {
     const { closeModal, refresh, teamId } = props;
