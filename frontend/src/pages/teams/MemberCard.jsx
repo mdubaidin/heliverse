@@ -1,16 +1,21 @@
 import { Avatar, Card, Stack, Typography } from '@mui/material';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const MemberCard = props => {
-    const { firstName, lastName, avatar, email } = props.member;
+    const { _id, firstName, lastName, avatar, email } = props.member;
+    const navigate = useNavigate();
+
     return (
         <Card
+            onClick={() => navigate(`/users/${_id}`)}
             elevation={0}
             sx={{
                 borderRadius: 3,
                 boxShadow:
                     'rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px',
                 p: 2,
+                cursor: 'pointer',
             }}>
             <Stack justifyContent='center' alignItems={'center'}>
                 <Avatar

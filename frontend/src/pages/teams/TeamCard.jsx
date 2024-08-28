@@ -3,7 +3,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const TeamCard = props => {
-    const { _id, name, domain, avatar, available, createdAt } = props.team;
+    const { _id, name, domain, avatar, available } = props.team;
     const navigate = useNavigate();
 
     return (
@@ -48,12 +48,8 @@ const TeamCard = props => {
                 }}>
                 {name}
             </Typography>
-            <Typography variant='body2' fontWeight={600} color='text.secondary' mb={2}>
-                {domain}
-            </Typography>
-
-            <Typography variant='body1' color='text.secondary' fontSize={15} fontWeight={600}>
-                Created on : {new Date(createdAt).toDateString()}
+            <Typography variant='body2' fontWeight={600} color='text.secondary' mb={0.2}>
+                {domain} Department
             </Typography>
         </Card>
     );

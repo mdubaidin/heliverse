@@ -89,55 +89,63 @@ const Users = () => {
             </Stack>
 
             <Stack
-                direction={{ xs: 'column', md: 'row' }}
+                direction={{ xs: 'column', lg: 'row' }}
                 spacing={4}
                 justifyContent='space-between'
                 alignItems='center'
                 mb={4}>
-                <Stack direction='row' spacing={2}>
-                    <Select
-                        name='domain'
-                        size='small'
-                        displayEmpty
-                        value={filter.domain}
-                        onChange={onSelectHandler}
-                        renderValue={v => (v ? v : 'Domains')}>
-                        <MenuItem value=''>All Domains</MenuItem>
-                        {Domains.map(domain => (
-                            <MenuItem key={domain} value={domain}>
-                                {domain}
-                            </MenuItem>
-                        ))}
-                    </Select>
+                <Grid container spacing={1} justifyContent={{ xs: 'center', lg: 'flex-start' }}>
+                    <Grid item>
+                        <Select
+                            name='domain'
+                            size='small'
+                            displayEmpty
+                            value={filter.domain}
+                            onChange={onSelectHandler}
+                            renderValue={v => (v ? v : 'Domains')}
+                            sx={{ mb: 0 }}>
+                            <MenuItem value=''>All Domains</MenuItem>
+                            {Domains.map(domain => (
+                                <MenuItem key={domain} value={domain}>
+                                    {domain}
+                                </MenuItem>
+                            ))}
+                        </Select>
+                    </Grid>
 
-                    <Select
-                        name='gender'
-                        size='small'
-                        displayEmpty
-                        value={filter.gender}
-                        onChange={onSelectHandler}
-                        renderValue={v => (v ? v : 'Gender')}>
-                        <MenuItem value=''>All</MenuItem>
-                        {Gender.map(gen => (
-                            <MenuItem key={gen} value={gen}>
-                                {gen}
-                            </MenuItem>
-                        ))}
-                    </Select>
+                    <Grid item>
+                        <Select
+                            name='gender'
+                            size='small'
+                            displayEmpty
+                            value={filter.gender}
+                            onChange={onSelectHandler}
+                            renderValue={v => (v ? v : 'Gender')}
+                            sx={{ mb: 0 }}>
+                            <MenuItem value=''>All</MenuItem>
+                            {Gender.map(gen => (
+                                <MenuItem key={gen} value={gen}>
+                                    {gen}
+                                </MenuItem>
+                            ))}
+                        </Select>
+                    </Grid>
 
-                    <Select
-                        name='available'
-                        size='small'
-                        displayEmpty
-                        value={filter.available}
-                        onChange={onSelectHandler}
-                        sx={{ minHeight: '36px' }}
-                        renderValue={v => (v ? v : 'Availability')}>
-                        <MenuItem value=''>All</MenuItem>
-                        <MenuItem value='Available'>Available</MenuItem>
-                        <MenuItem value='Unavailable'>Unavailable</MenuItem>
-                    </Select>
-                </Stack>
+                    <Grid item>
+                        <Select
+                            name='available'
+                            size='small'
+                            displayEmpty
+                            value={filter.available}
+                            onChange={onSelectHandler}
+                            sx={{ mb: 0 }}
+                            renderValue={v => (v ? v : 'Availability')}>
+                            <MenuItem value=''>All</MenuItem>
+                            <MenuItem value='Available'>Available</MenuItem>
+                            <MenuItem value='Unavailable'>Unavailable</MenuItem>
+                        </Select>
+                    </Grid>
+                </Grid>
 
                 <Search
                     placeholder='Search Users'

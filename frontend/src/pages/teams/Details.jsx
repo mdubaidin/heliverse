@@ -166,6 +166,12 @@ const Details = () => {
                         />
                     </Stack>
                     <Divider sx={{ my: 1.5 }} />
+
+                    <Typography variant='h6' color='text.secondary' gutterBottom>
+                        {' '}
+                        Team Members
+                    </Typography>
+
                     <Grid container spacing={2}>
                         {team.members?.map(member => (
                             <Grid item xs={12} sm={6} md={3} lg={2} key={member._id}>
